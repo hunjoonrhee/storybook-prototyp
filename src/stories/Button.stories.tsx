@@ -1,41 +1,42 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Button, { ButtonProps } from '../components/Button'
+import {Meta, Story} from "@storybook/react";
 
-import { Button } from './Button';
+export default{
+  title:"Button",
+  component:Button,
+  argTypes: {clickHandler: {action: "clicked!!"}},
+}as Meta
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: 'Example/Button',
-  component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as ComponentMeta<typeof Button>;
+const Template: Story<ButtonProps> = (args) => <Button {...args}/>
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: 'Button',
+export const RedButton = Template.bind({});
+RedButton.args = {
+  label: "Red Button",
+  backgroundColor: "red",
+  size:"md",
+  color:"white",
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
+export const BlueButton = Template.bind({});
+BlueButton.args = {
+  label: "Blue Button",
+  backgroundColor: "blue",
+  size:"lg",
+  color:"white",
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
+export const SmallButton = Template.bind({});
+SmallButton.args = {
+  label: "Small Button",
+  backgroundColor: "grey",
+  size:"sm",
+  color:"black",
 };
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const LongLabelButton = Template.bind({});
+LongLabelButton.args = {
+  label: "Loooooooooooooong contents",
+  backgroundColor: "white",
+  size:"md",
+  color:"red",
 };
